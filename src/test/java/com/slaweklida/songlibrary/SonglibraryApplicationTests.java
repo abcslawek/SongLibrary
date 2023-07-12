@@ -1,10 +1,10 @@
-package com.slaweklida.songlibrary;
+package com.slaweklida.songLibrary;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class SonglibraryApplicationTests {
+class SongLibraryApplicationTests {
 
 	@Test
 	void contextLoads() {

@@ -1,4 +1,4 @@
-package com.slaweklida.songlibrary;
+package com.slaweklida.songLibrary;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
