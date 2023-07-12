@@ -18,7 +18,7 @@ public class SongRepository {
     }
 
     public Song getById(int id){
-        return jdbcTemplate.queryForObject("SELECT id, title, artist FROM movie WHERE id = ?", BeanPropertyRowMapper.newInstance(Song.class), id);
+        return jdbcTemplate.queryForObject("SELECT id, title, artist FROM song WHERE id = ?", BeanPropertyRowMapper.newInstance(Song.class), id);
     }
 
     public int save(List<Song> songs) {

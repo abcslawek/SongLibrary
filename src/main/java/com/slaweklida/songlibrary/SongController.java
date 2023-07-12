@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/songs") //stała
+@RequestMapping("/songs") //stały adres
 public class SongController {
 
     @Autowired
@@ -33,8 +33,24 @@ public class SongController {
         if(song != null){
             song.setTitle(updatedSong.getTitle());
             song.setArtist(updatedSong.getArtist());
+
+            songRepository.update(song);
             return 1;
         } else{
+            return -1;
+        }
+    }
+
+    @PatchMapping("/{id}")
+    public int partiallyUpdate(@PathVariable("id") int id, @RequestBody Song updatedSong){
+        Song song = songRepository.getById(id);
+        if(song != null){
+            if(updatedSong.getTitle() != null) song.setTitle(updatedSong.getTitle());
+            if(updatedSong.getArtist() != null) song.setArtist(updatedSong.getArtist());
+
+            songRepository.update(song);
+            return 1;
+        }else{
             return -1;
         }
     }
