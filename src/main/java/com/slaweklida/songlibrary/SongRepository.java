@@ -29,4 +29,8 @@ public class SongRepository {
     public int update(Song song){
         return jdbcTemplate.update("UPDATE song SET title=?, artist=? WHERE id=?", song.getTitle(), song.getArtist(), song.getId());
     }
+
+    public int delete(int id) {
+        return jdbcTemplate.update("DELETE FROM song WHERE id = ?", id);
+    }
 }
