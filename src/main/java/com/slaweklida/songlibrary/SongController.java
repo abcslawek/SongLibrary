@@ -23,8 +23,20 @@ public class SongController {
     }
 
     @PostMapping("")
-    public int add(@RequestBody List<Song> songs) { //@RequestBody ponieważ zawartość przyjdzie w jsonie razem z zapytaniem
+    public int add(@RequestBody List<Song> songs) { //@RequestBody ponieważ PRZEKAZUJEMY zawartość w jsonie razem z zapytaniem
         return songRepository.save(songs);
+    }
+
+    @PutMapping("/{id}")
+    public int update(@PathVariable("id") int id, @RequestBody Song updatedSong){
+        Song song = songRepository.getById(id);
+        if(song != null){
+            song.setTitle(updatedSong.getTitle());
+            song.setArtist(updatedSong.getArtist());
+            return 1;
+        } else{
+            return -1;
+        }
     }
 
 }

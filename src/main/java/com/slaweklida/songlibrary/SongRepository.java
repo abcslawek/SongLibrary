@@ -23,7 +23,10 @@ public class SongRepository {
 
     public int save(List<Song> songs) {
         songs.forEach(song -> jdbcTemplate.update("INSERT INTO song(title, artist) VALUES(?, ?)", song.getTitle(), song.getArtist()));
+        return 1;
+    }
 
-        return 0;
+    public int update(Song song){
+        return jdbcTemplate.update("UPDATE song SET title=?, artist=? WHERE id=?", song.getTitle(), song.getArtist(), song.getId());
     }
 }
